@@ -1,0 +1,104 @@
+book_id,title,author,available
+1,the catcher in the Rye,j.d salinger,False
+2,to kill a mockingbird,harper lee,True
+3,Rich dad & poor dad,Robert Kiyosaki and Sharon Lechter,True
+4,Fundamentals of Wavelets,"Goswami, Jaideva",True
+5,Data Smart,"Foreman, John",False
+6,God Created the Integers,"Hawking, Stephen",True
+7,Superfreakonomics,"Dubner, Stephen",True
+8,Orientalism,"Said, Edward",True
+9,"Nature of Statistical Learning Theory, The","Vapnik, Vladimir",True
+10,Integration of the Indian States,"Menon, V P",True
+11,"Drunkard's Walk, The","Mlodinow, Leonard",True
+12,Image Processing & Mathematical Morphology,"Shih, Frank",True
+13,How to Think Like Sherlock Holmes,"Konnikova, Maria",True
+14,Data Scientists at Work,Sebastian Gutierrez,True
+15,Slaughterhouse Five,"Vonnegut, Kurt",True
+16,Birth of a Theorem,"Villani, Cedric",True
+17,Structure & Interpretation of Computer Programs,"Sussman, Gerald",True
+18,"Age of Wrath, The","Eraly, Abraham",True
+19,"Trial, The","Kafka, Frank",True
+20,Statistical Decision Theory',"Pratt, John",True
+21,Data Mining Handbook,"Nisbet, Robert",True
+22,"New Machiavelli, The","Wells, H. G.",True
+23,Physics & Philosophy,"Heisenberg, Werner",True
+24,Making Software,"Oram, Andy",True
+25,"Analysis, Vol I","Tao, Terence",True
+26,Machine Learning for Hackers,"Conway, Drew",True
+27,"Signal and the Noise, The","Silver, Nate",True
+28,Python for Data Analysis,"McKinney, Wes",True
+29,Introduction to Algorithms,"Cormen, Thomas",True
+30,"Beautiful and the Damned, The","Deb, Siddhartha",True
+31,"Outsider, The","Camus, Albert",True
+32,"Complete Sherlock Holmes, The - Vol I","Doyle, Arthur Conan",True
+33,"Complete Sherlock Holmes, The - Vol II","Doyle, Arthur Conan",True
+34,"Wealth of Nations, The","Smith, Adam",True
+35,"Pillars of the Earth, The","Follett, Ken",True
+36,Mein Kampf,"Hitler, Adolf",True
+37,"Tao of Physics, The","Capra, Fritjof",True
+38,Surely You're Joking Mr Feynman,"Feynman, Richard",True
+39,"Farewell to Arms, A","Hemingway, Ernest",True
+40,"Veteran, The","Forsyth, Frederick",True
+41,False Impressions,"Archer, Jeffery",True
+42,"Last Lecture, The","Pausch, Randy",True
+43,Return of the Primitive,"Rand, Ayn",True
+44,Jurassic Park,"Crichton, Michael",True
+45,"Russian Journal, A","Steinbeck, John",True
+46,Tales of Mystery and Imagination,"Poe, Edgar Allen",True
+47,Freakonomics,"Dubner, Stephen",True
+48,"Hidden Connections, The","Capra, Fritjof",True
+49,"Story of Philosophy, The","Durant, Will",True
+50,Asami Asami,"Deshpande, P L",True
+51,Journal of a Novel,"Steinbeck, John",True
+52,Once There Was a War,"Steinbeck, John",True
+53,"Moon is Down, The","Steinbeck, John",True
+54,"Brethren, The","Grisham, John",True
+55,In a Free State,"Naipaul, V. S.",True
+56,Catch 22,"Heller, Joseph",True
+57,"Complete Mastermind, The",BBC,True
+58,Dylan on Dylan,"Dylan, Bob",True
+59,Soft Computing & Intelligent Systems,"Gupta, Madan",True
+60,Textbook of Economic Theory,"Stonier, Alfred",True
+61,Econometric Analysis,"Greene, W. H.",True
+62,Learning OpenCV,"Bradsky, Gary",True
+63,Data Structures Using C & C++,"Tanenbaum, Andrew",True
+64,"Computer Vision, A Modern Approach","Forsyth, David",True
+65,Principles of Communication Systems,"Taub, Schilling",True
+66,Let Us C,"Kanetkar, Yashwant",True
+67,"Amulet of Samarkand, The","Stroud, Jonathan",True
+68,Crime and Punishment,"Dostoevsky, Fyodor",True
+69,Angels & Demons,"Brown, Dan",True
+70,"Argumentative Indian, The","Sen, Amartya",True
+71,Sea of Poppies,"Ghosh, Amitav",True
+72,"Idea of Justice, The","Sen, Amartya",True
+73,"Raisin in the Sun, A","Hansberry, Lorraine",True
+74,All the President's Men,"Woodward, Bob",True
+75,"Prisoner of Birth, A","Archer, Jeffery",True
+76,Scoop!,"Nayar, Kuldip",True
+77,Ahe Manohar Tari,"Deshpande, Sunita",True
+78,"Last Mughal, The","Dalrymple, William",True
+79,"Social Choice & Welfare, Vol 39 No. 1",Various,True
+80,Radiowaril Bhashane & Shrutika,"Deshpande, P L",True
+81,Gun Gayin Awadi,"Deshpande, P L",True
+82,Aghal Paghal,"Deshpande, P L",True
+83,Maqta-e-Ghalib,"Garg, Sanjay",True
+84,Beyond Degrees,,True
+85,Manasa,"Kale, V P",True
+86,India from Midnight to Milennium,"Tharoor, Shashi",True
+87,"World's Greatest Trials, The",,True
+88,"Great Indian Novel, The","Tharoor, Shashi",True
+89,O Jerusalem!,"Lapierre, Dominique",True
+90,"City of Joy, The","Lapierre, Dominique",True
+91,Freedom at Midnight,"Lapierre, Dominique",True
+92,"Winter of Our Discontent, The","Steinbeck, John",True
+93,On Education,"Russell, Bertrand",True
+94,Free Will,"Harris, Sam",True
+95,Bookless in Baghdad,"Tharoor, Shashi",True
+96,"Case of the Lame Canary, The","Gardner, Earle Stanley",True
+97,"Theory of Everything, The","Hawking, Stephen",True
+98,New Markets & Other Essays,"Drucker, Peter",True
+99,Electric Universe,"Bodanis, David",True
+100,"Hunchback of Notre Dame, The","Hugo, Victor",True
+101,Burning Bright,"Steinbeck, John",True
+102,"Age of Discontuinity, The","Drucker, Peter",True
+103,testing,uk,False

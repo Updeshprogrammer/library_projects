@@ -7,18 +7,15 @@ books_df = pd.read_csv('books.csv')
 users_df = pd.read_csv('users.csv')
 borrow_records_df = pd.read_csv('borrow_records.csv')
 
-
 # Save data function
 def save_data(df, filename):
     df.to_csv(filename, index=False)
-
 
 # Streamlit app
 st.title("Library Management System")
 
 # Sidebar for navigation
-option = st.sidebar.selectbox("Choose an option",
-                              ("View Books", "Add Book", "View Users", "Add User", "Borrow Book", "Return Book"))
+option = st.sidebar.selectbox("Choose an option", ("View Books", "Add Book", "View Users", "Add User", "Borrow Book", "Return Book"))
 
 if option == "View Books":
     st.header("List of Books")
@@ -30,7 +27,7 @@ elif option == "Add Book":
     title = st.text_input("Title")
     author = st.text_input("Author")
     available = st.checkbox("Available", value=True)
-
+    
     if st.button("Add Book"):
         new_book = pd.DataFrame([[book_id, title, author, available]], columns=books_df.columns)
         books_df = pd.concat([books_df, new_book], ignore_index=True)
@@ -46,7 +43,7 @@ elif option == "Add User":
     user_id = st.number_input("User ID", value=users_df['user_id'].max() + 1)
     name = st.text_input("Name")
     email = st.text_input("Email")
-
+    
     if st.button("Add User"):
         new_user = pd.DataFrame([[user_id, name, email]], columns=users_df.columns)
         users_df = pd.concat([users_df, new_user], ignore_index=True)
@@ -70,8 +67,7 @@ elif option == "Borrow Book":
 
             borrow_date = datetime.date.today().isoformat()
             return_date = ''
-            new_record = pd.DataFrame([[len(borrow_records_df) + 1, book_id, user_id, borrow_date, return_date]],
-                                      columns=borrow_records_df.columns)
+            new_record = pd.DataFrame([[len(borrow_records_df) + 1, book_id, user_id, borrow_date, return_date]], columns=borrow_records_df.columns)
             borrow_records_df = pd.concat([borrow_records_df, new_record], ignore_index=True)
             books_df.loc[books_df['book_id'] == book_id, 'available'] = False
             save_data(books_df, 'books.csv')
@@ -82,23 +78,14 @@ elif option == "Borrow Book":
 
 elif option == "Return Book":
     st.header("Return a Book")
-
-    # Dropdowns for selecting book and user names
-    user_name = st.selectbox("Select User", users_df['name'])
-    borrowed_books = borrow_records_df[
-        borrow_records_df['user_id'].isin(users_df[users_df['name'] == user_name]['user_id'])]
-    book_name = st.selectbox("Select Book", books_df[books_df['book_id'].isin(borrowed_books['book_id'])]['title'])
-
+    record_id = st.number_input("Record ID", value=0, min_value=0, max_value=borrow_records_df['record_id'].max())
+    
     if st.button("Return"):
-        user_id = users_df[users_df['name'] == user_name]['user_id'].values[0]
-        book_id = books_df[books_df['title'] == book_name]['book_id'].values[0]
-
-        record_idx = borrow_records_df[(borrow_records_df['user_id'] == user_id) &
-                                       (borrow_records_df['book_id'] == book_id) &
-                                       (borrow_records_df['return_date'] == '')].index[0]
-
+        record_idx = borrow_records_df[borrow_records_df['record_id'] == record_id].index[0]
+        book_id = borrow_records_df.at[record_idx, 'book_id']
         borrow_records_df.at[record_idx, 'return_date'] = datetime.date.today().isoformat()
-        books_df.loc[books_df['book_id'] == book_id, 'available'] = True
+        book_idx = books_df[books_df['book_id'] == book_id].index[0]
+        books_df.at[book_idx, 'available'] = True
         save_data(books_df, 'books.csv')
         save_data(borrow_records_df, 'borrow_records.csv')
-        st.success(f"Book '{book_name}' returned by '{user_name}' successfully")
+        st.success("Book returned successfully")

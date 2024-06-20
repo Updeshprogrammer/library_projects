@@ -55,34 +55,50 @@ elif option == "Add User":
 
 elif option == "Borrow Book":
     st.header("Borrow a Book")
-    book_id = st.number_input("Book ID", value=0, min_value=0, max_value=books_df['book_id'].max())
-    user_id = st.number_input("User ID", value=0, min_value=0, max_value=users_df['user_id'].max())
+
+    # Dropdowns for selecting book and user names
+    book_name = st.selectbox("Select Book", books_df['title'][books_df['available'] == True])
+    user_name = st.selectbox("Select User", users_df['name'])
 
     if st.button("Borrow"):
-        book_idx = books_df[books_df['book_id'] == book_id].index[0]
-        if books_df.at[book_idx, 'available']:
+        book_row = books_df[books_df['title'] == book_name]
+        user_row = users_df[users_df['name'] == user_name]
+
+        if not book_row.empty and not user_row.empty:
+            book_id = book_row['book_id'].values[0]
+            user_id = user_row['user_id'].values[0]
+
             borrow_date = datetime.date.today().isoformat()
             return_date = ''
             new_record = pd.DataFrame([[len(borrow_records_df) + 1, book_id, user_id, borrow_date, return_date]],
                                       columns=borrow_records_df.columns)
             borrow_records_df = pd.concat([borrow_records_df, new_record], ignore_index=True)
-            books_df.at[book_idx, 'available'] = False
+            books_df.loc[books_df['book_id'] == book_id, 'available'] = False
             save_data(books_df, 'books.csv')
             save_data(borrow_records_df, 'borrow_records.csv')
-            st.success("Book borrowed successfully")
+            st.success(f"Book '{book_name}' borrowed by '{user_name}' successfully")
         else:
-            st.error("Book is not available")
+            st.error("Error in borrowing book")
 
 elif option == "Return Book":
     st.header("Return a Book")
-    record_id = st.number_input("Record ID", value=0, min_value=0, max_value=borrow_records_df['record_id'].max())
+
+    # Dropdowns for selecting book and user names
+    user_name = st.selectbox("Select User", users_df['name'])
+    borrowed_books = borrow_records_df[
+        borrow_records_df['user_id'].isin(users_df[users_df['name'] == user_name]['user_id'])]
+    book_name = st.selectbox("Select Book", books_df[books_df['book_id'].isin(borrowed_books['book_id'])]['title'])
 
     if st.button("Return"):
-        record_idx = borrow_records_df[borrow_records_df['record_id'] == record_id].index[0]
-        book_id = borrow_records_df.at[record_idx, 'book_id']
+        user_id = users_df[users_df['name'] == user_name]['user_id'].values[0]
+        book_id = books_df[books_df['title'] == book_name]['book_id'].values[0]
+
+        record_idx = borrow_records_df[(borrow_records_df['user_id'] == user_id) &
+                                       (borrow_records_df['book_id'] == book_id) &
+                                       (borrow_records_df['return_date'] == '')].index[0]
+
         borrow_records_df.at[record_idx, 'return_date'] = datetime.date.today().isoformat()
-        book_idx = books_df[books_df['book_id'] == book_id].index[0]
-        books_df.at[book_idx, 'available'] = True
+        books_df.loc[books_df['book_id'] == book_id, 'available'] = True
         save_data(books_df, 'books.csv')
         save_data(borrow_records_df, 'borrow_records.csv')
-        st.success("Book returned successfully")
+        st.success(f"Book '{book_name}' returned by '{user_name}' successfully")
